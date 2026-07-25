@@ -1,5 +1,4 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import { InteractionHelper } from '../../utils/interactionHelper.js';
 
 export default {
     data: new SlashCommandBuilder()
@@ -9,13 +8,10 @@ export default {
     category: 'Utility',
 
     async execute(interaction) {
-
-        await InteractionHelper.safeDefer(interaction);
-
         const embed = new EmbedBuilder()
             .setColor('#8A2BE2')
             .setTitle('💜 Vanta Prices')
-            .setThumbnail('https://media.discordapp.net/attachments/1530619281249927399/1530628645843111936/Jul_25_2026_11_31_31_AM.png?ex=6a664482&is=6a64f302&hm=1c2dbb75264ad935c6c1d8bea4790dccea3aae9f2a366bd039efa13c4e41fe16&=&format=webp&quality=lossless&width=987&height=395')
+            .setThumbnail('https://media.discordapp.net/attachments/1530619281249927399/1530628645843111936/Jul_25_2026_11_31_31_AM.png')
             .setDescription(`
 # 🏆 Rank Boosting
 
@@ -51,18 +47,18 @@ You will be teamed up with experienced players to complete your winstreak as qui
 
 ━━━━━━━━━━━━━━━━━━━━━━
 
-💜 **Need something custom?**  
+💜 **Need something custom?**
+
 Open a ticket and we'll provide a personalized quote.
 
 *Delivery time will be estimated inside your ticket.*
-            `)
+`)
             .setFooter({
                 text: '💜 Vanta • Premium Services'
             });
 
-        await InteractionHelper.safeEditReply(interaction, {
+        await interaction.reply({
             embeds: [embed]
         });
-
     }
 };
